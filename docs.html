@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cstrsk-metro-ui — Doku &amp; Referenz</title>
+<style>
+:root{
+  --bg:#0D1117; --panel:#161B22; --border:#30363D; --fg:#E6EDF3; --fg-dim:#8B949E;
+  --code-bg:#0A0E14; --link:#58A6FF; --ok:#3FB950;
+  --font:-apple-system,"Segoe UI",sans-serif; --mono:"SF Mono","Consolas","Cascadia Code",monospace;
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{ font-family:var(--font); background:var(--bg); color:var(--fg); line-height:1.55; }
+a{ color:var(--link); }
+.wrap{ max-width:920px; margin:0 auto; padding:32px 20px 100px; }
+h1{ font-size:26px; margin:0 0 4px; }
+.lede{ color:var(--fg-dim); font-size:14px; margin:0 0 28px; }
+h2{ font-size:19px; border-top:1px solid var(--border); padding-top:32px; margin:0 0 6px; }
+h2:first-of-type{ border-top:none; padding-top:0; }
+h3{ font-size:14.5px; margin:22px 0 8px; color:var(--fg); }
+p.desc{ color:var(--fg-dim); font-size:13.5px; margin:0 0 14px; max-width:640px; }
+
+nav.toc{ display:flex; flex-wrap:wrap; gap:8px 16px; padding:10px 14px; background:var(--panel); border:1px solid var(--border); border-radius:8px; margin-bottom:32px; font-size:12.5px; }
+nav.toc a{ text-decoration:none; }
+
+table{ width:100%; border-collapse:collapse; font-size:13px; margin-bottom:20px; }
+th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+th{ color:var(--fg-dim); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; }
+td code{ font-family:var(--mono); font-size:12px; color:var(--ok); }
+.swatch{ display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:middle; margin-right:6px; border:1px solid rgba(255,255,255,.15); }
+
+.snippet{ position:relative; margin-bottom:18px; }
+.snippet pre{
+  background:var(--code-bg); border:1px solid var(--border); border-radius:8px; padding:14px 16px;
+  overflow-x:auto; font-family:var(--mono); font-size:12.5px; margin:0; line-height:1.6;
+}
+.snippet .copy{
+  position:absolute; top:8px; right:8px; background:var(--panel); border:1px solid var(--border); color:var(--fg-dim);
+  font-size:11px; padding:5px 10px; border-radius:6px; cursor:pointer; font-family:var(--font);
+}
+.snippet .copy:hover{ color:var(--fg); border-color:var(--fg-dim); }
+.snippet .copy.copied{ color:var(--ok); border-color:var(--ok); }
+
+.tag-open{ color:#7EE787; } .tag-close{ color:#7EE787; } .attr{ color:#79C0FF; } .val{ color:#A5D6FF; }
+
+.tabs{ display:flex; gap:4px; margin-bottom:16px; border-bottom:1px solid var(--border); }
+.tabs button{
+  background:none; border:none; color:var(--fg-dim); padding:8px 14px; font-size:13px; cursor:pointer;
+  border-bottom:2px solid transparent; margin-bottom:-1px;
+}
+.tabs button.active{ color:var(--fg); border-bottom-color:var(--link); }
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+@media (max-width:640px){ .grid2{ grid-template-columns:1fr; } }
+.footnote{ font-size:12px; color:var(--fg-dim); margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>cstrsk-metro-ui — Doku &amp; Referenz</h1>
+  <p class="lede">Design-Tokens, CSS-Klassen und copy-paste-fertige Snippets für <a href="index.html">Metro/WP8</a> und <a href="fluent.html">Fluent (Win 11)</a>. Kein Build-Schritt — Dateien direkt einbinden.</p>
+
+  <nav class="toc">
+    <a href="#einbindung">Einbindung</a>
+    <a href="#tokens">Tokens</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#formulare">Formulare</a>
+    <a href="#karten">Karten/Kacheln</a>
+    <a href="#listen">Listen</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#dialoge">Dialoge</a>
+    <a href="#breakpoints">Breakpoints</a>
+  </nav>
+
+  <div class="tabs" role="tablist">
+    <button class="active" data-sys="metro">Metro / WP8</button>
+    <button data-sys="fluent">Fluent / Win 11</button>
+  </div>
+
+  <section id="einbindung">
+    <h2>Einbindung</h2>
+    <div class="tab-panel metro active">
+      <div class="snippet">
+        <pre><span class="tag-open">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"css/metro.css"</span><span class="tag-open">&gt;</span>
+<span class="tag-open">&lt;script</span> <span class="attr">src</span>=<span class="val">"js/metro.js"</span> <span class="attr">defer</span><span class="tag-open">&gt;&lt;/script&gt;</span></pre>
+        <button class="copy">kopieren</button>
+      </div>
+      <p class="desc">Theme per <code>data-theme="dark"</code> / <code>"light"</code> auf <code>&lt;body&gt;</code> steuern.</p>
+    </div>
+    <div class="tab-panel fluent">
+      <div class="snippet">
+        <pre><span class="tag-open">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"css/fluent.css"</span><span class="tag-open">&gt;</span>
+<span class="tag-open">&lt;script</span> <span class="attr">src</span>=<span class="val">"js/fluent.js"</span> <span class="attr">defer</span><span class="tag-open">&gt;&lt;/script&gt;</span></pre>
+        <button class="copy">kopieren</button>
+      </div>
+      <p class="desc">Theme per <code>data-theme="dark"</code> / <code>"light"</code> auf <code>&lt;body&gt;</code> steuern.</p>
+    </div>
+  </section>
+
+  <section id="tokens">
+    <h2>Design-Tokens</h2>
+    <p class="desc">Alle Komponenten leiten aus diesen Custom Properties ab — eigenes Branding = Werte in <code>:root</code> überschreiben, kein Klassen-Umschreiben nötig.</p>
+
+    <div class="tab-panel metro active">
+      <h3>Akzentfarben (Kachelfarbrad)</h3>
+      <table>
+        <tr><th>Klasse</th><th>Wert</th><th>Vorschau</th></tr>
+        <tr><td><code>.c-cobalt</code></td><td><code>#0050EF</code></td><td><span class="swatch" style="background:#0050EF"></span></td></tr>
+        <tr><td><code>.c-emerald</code></td><td><code>#008A00</code></td><td><span class="swatch" style="background:#008A00"></span></td></tr>
+        <tr><td><code>.c-magenta</code></td><td><code>#D80073</code></td><td><span class="swatch" style="background:#D80073"></span></td></tr>
+        <tr><td><code>.c-mango</code></td><td><code>#F0A30A</code></td><td><span class="swatch" style="background:#F0A30A"></span></td></tr>
+        <tr><td><code>.c-teal</code></td><td><code>#00ABA9</code></td><td><span class="swatch" style="background:#00ABA9"></span></td></tr>
+        <tr><td><code>.c-indigo</code></td><td><code>#6A00FF</code></td><td><span class="swatch" style="background:#6A00FF"></span></td></tr>
+        <tr><td><code>.c-crimson</code></td><td><code>#A20025</code></td><td><span class="swatch" style="background:#A20025"></span></td></tr>
+        <tr><td><code>.c-lime</code></td><td><code>#A4C400</code></td><td><span class="swatch" style="background:#A4C400"></span></td></tr>
+        <tr><td><code>.c-steel</code></td><td><code>#647687</code></td><td><span class="swatch" style="background:#647687"></span></td></tr>
+      </table>
+      <h3>Layout &amp; Typografie</h3>
+      <table>
+        <tr><th>Variable</th><th>Bedeutung</th></tr>
+        <tr><td><code>--tile-unit</code></td><td>Kachel-Grundmaß (78px mobil → 128px Desktop)</td></tr>
+        <tr><td><code>--tile-gap</code></td><td>Abstand zwischen Kacheln</td></tr>
+        <tr><td><code>--font-light</code></td><td>Segoe UI Light — für Panorama-Titel &amp; Pivot-Tabs</td></tr>
+        <tr><td><code>--fast</code></td><td>Standard-Transition (180ms)</td></tr>
+      </table>
+    </div>
+
+    <div class="tab-panel fluent">
+      <h3>Farben &amp; Elevation</h3>
+      <table>
+        <tr><th>Variable</th><th>Wert (hell)</th><th>Vorschau</th></tr>
+        <tr><td><code>--accent</code></td><td><code>#0078D4</code></td><td><span class="swatch" style="background:#0078D4"></span></td></tr>
+        <tr><td><code>--window-bg</code></td><td><code>#ECECEC</code></td><td><span class="swatch" style="background:#ECECEC"></span></td></tr>
+        <tr><td><code>--card-bg</code></td><td><code>#FBFBFB</code></td><td><span class="swatch" style="background:#FBFBFB"></span></td></tr>
+        <tr><td><code>--stroke</code></td><td><code>rgba(0,0,0,.075)</code></td><td>—</td></tr>
+      </table>
+      <h3>Radien &amp; Schatten</h3>
+      <table>
+        <tr><th>Variable</th><th>Wert</th></tr>
+        <tr><td><code>--radius-s</code> / <code>-m</code> / <code>-l</code></td><td>4px / 6px / 8px</td></tr>
+        <tr><td><code>--radius-pill</code></td><td>999px (Switches, Auswahl-Indikator)</td></tr>
+        <tr><td><code>--shadow-2</code></td><td>Ruhezustand (Karten, Buttons)</td></tr>
+        <tr><td><code>--shadow-8</code></td><td>Hover-Elevation</td></tr>
+        <tr><td><code>--shadow-16</code></td><td>Dialoge / Flyouts</td></tr>
+        <tr><td><code>--titlebar-h</code></td><td>32px — Fenster-Chrome-Höhe</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="buttons">
+    <h2>Buttons</h2>
+    <div class="tab-panel metro active">
+      <div class="snippet"><pre><span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn primary"</span><span class="tag-open">&gt;</span>speichern<span class="tag-close">&lt;/button&gt;</span>
+<span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn"</span><span class="tag-open">&gt;</span>abbrechen<span class="tag-close">&lt;/button&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+    <div class="tab-panel fluent">
+      <div class="snippet"><pre><span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn accent reveal"</span><span class="tag-open">&gt;</span>speichern<span class="tag-close">&lt;/button&gt;</span>
+<span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn reveal"</span><span class="tag-open">&gt;</span>abbrechen<span class="tag-close">&lt;/button&gt;</span></pre><button class="copy">kopieren</button></div>
+      <p class="footnote">Klasse <code>.reveal</code> aktiviert den Lichtschein-Hover — braucht <code>js/fluent.js</code> für die Zeigerposition.</p>
+    </div>
+  </section>
+
+  <section id="formulare">
+    <h2>Formulare</h2>
+    <div class="grid2">
+      <div>
+        <h3>Toggle-Switch</h3>
+        <div class="tab-panel metro active">
+          <div class="snippet"><pre><span class="tag-open">&lt;label</span> <span class="attr">class</span>=<span class="val">"switch"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;input</span> <span class="attr">type</span>=<span class="val">"checkbox"</span> <span class="attr">checked</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"rail"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"knob"</span><span class="tag-open">&gt;&lt;/span&gt;&lt;/span&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"txt"</span><span class="tag-open">&gt;</span>an<span class="tag-close">&lt;/span&gt;
+&lt;/label&gt;</span></pre><button class="copy">kopieren</button></div>
+        </div>
+        <div class="tab-panel fluent">
+          <div class="snippet"><pre><span class="tag-open">&lt;label</span> <span class="attr">class</span>=<span class="val">"f-switch"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;input</span> <span class="attr">type</span>=<span class="val">"checkbox"</span> <span class="attr">checked</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"rail"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"knob"</span><span class="tag-open">&gt;&lt;/span&gt;&lt;/span&gt;</span>
+  wlan
+&lt;/label&gt;</span></pre><button class="copy">kopieren</button></div>
+        </div>
+      </div>
+      <div>
+        <h3>Textfeld</h3>
+        <div class="tab-panel metro active">
+          <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"field"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;label</span> <span class="attr">for</span>=<span class="val">"name"</span><span class="tag-open">&gt;</span>name<span class="tag-close">&lt;/label&gt;</span>
+  <span class="tag-open">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">id</span>=<span class="val">"name"</span><span class="tag-open">&gt;</span>
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+        </div>
+        <div class="tab-panel fluent">
+          <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"field"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;label</span> <span class="attr">for</span>=<span class="val">"name"</span><span class="tag-open">&gt;</span>name<span class="tag-close">&lt;/label&gt;</span>
+  <span class="tag-open">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">id</span>=<span class="val">"name"</span><span class="tag-open">&gt;</span>
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="karten">
+    <h2>Karten / Kacheln</h2>
+    <div class="tab-panel metro active">
+      <p class="desc">Größen: <code>tile-1x1</code>, <code>tile-2x2</code>, <code>tile-4x2</code>. Vorder-/Rückseite flippt automatisch per <code>js/metro.js</code>.</p>
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"tile tile-2x2 c-cobalt"</span> <span class="attr">tabindex</span>=<span class="val">"0"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"tile-flip"</span><span class="tag-open">&gt;</span>
+    <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"tile-face front"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"tile-label"</span><span class="tag-open">&gt;</span>mail<span class="tag-close">&lt;/span&gt;&lt;/div&gt;</span>
+    <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"tile-face back c-cobalt"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"tile-stat"</span><span class="tag-open">&gt;</span>12<span class="tag-close">&lt;/span&gt;&lt;/div&gt;</span>
+  &lt;/div&gt;
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+    <div class="tab-panel fluent">
+      <p class="desc"><code>.icon-tile</code> ist der farbige Icon-Container; <code>.reveal</code> aktiviert den Hover-Lichtschein.</p>
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"card reveal"</span> <span class="attr">tabindex</span>=<span class="val">"0"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"icon-tile"</span><span class="tag-open">&gt;</span>…svg…<span class="tag-close">&lt;/span&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"title"</span><span class="tag-open">&gt;</span>Nachrichten<span class="tag-close">&lt;/span&gt;</span>
+  <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"sub"</span><span class="tag-open">&gt;</span>12 ungelesen<span class="tag-close">&lt;/span&gt;</span>
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+  </section>
+
+  <section id="listen">
+    <h2>Listen</h2>
+    <div class="tab-panel metro active">
+      <div class="snippet"><pre><span class="tag-open">&lt;ul</span> <span class="attr">class</span>=<span class="val">"list"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;li&gt;</span>
+    <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"avatar c-cobalt"</span><span class="tag-open">&gt;</span>AK<span class="tag-close">&lt;/span&gt;</span>
+    <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"meta"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"title"</span><span class="tag-open">&gt;</span>Anna Keller<span class="tag-close">&lt;/span&gt;&lt;/span&gt;</span>
+    <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"chev"</span><span class="tag-open">&gt;</span>›<span class="tag-close">&lt;/span&gt;</span>
+  &lt;/li&gt;
+&lt;/ul&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+    <div class="tab-panel fluent">
+      <div class="snippet"><pre><span class="tag-open">&lt;ul</span> <span class="attr">class</span>=<span class="val">"list"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;li&gt;</span>
+    <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"avatar"</span><span class="tag-open">&gt;</span>AK<span class="tag-close">&lt;/span&gt;</span>
+    <span class="tag-open">&lt;span</span> <span class="attr">class</span>=<span class="val">"meta"</span><span class="tag-open">&gt;&lt;span</span> <span class="attr">class</span>=<span class="val">"title"</span><span class="tag-open">&gt;</span>Anna Keller<span class="tag-close">&lt;/span&gt;&lt;/span&gt;</span>
+    <span class="tag-open">&lt;svg</span> <span class="attr">class</span>=<span class="val">"icon chev"</span><span class="tag-open">&gt;&lt;use</span> <span class="attr">href</span>=<span class="val">"#i-chevron"</span><span class="tag-open">/&gt;&lt;/svg&gt;</span>
+  &lt;/li&gt;
+&lt;/ul&gt;</span></pre><button class="copy">kopieren</button></div>
+      <p class="footnote">Icons kommen aus dem <code>&lt;symbol&gt;</code>-Sprite am Kopf von <code>fluent.html</code> — beim Übernehmen in ein anderes Projekt mit kopieren.</p>
+    </div>
+  </section>
+
+  <section id="feedback">
+    <h2>Feedback (Toast / InfoBar)</h2>
+    <div class="tab-panel metro active">
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"toast show"</span><span class="tag-open">&gt;&lt;span&gt;</span>✓<span class="tag-close">&lt;/span&gt;</span> Änderungen gespeichert<span class="tag-close">&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+    <div class="tab-panel fluent">
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"infobar success"</span><span class="tag-open">&gt;</span>…svg…Backup erfolgreich<span class="tag-close">&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+      <p class="footnote">Varianten: ohne Klasse (info), <code>.success</code>, <code>.warning</code>, <code>.error</code>.</p>
+    </div>
+  </section>
+
+  <section id="dialoge">
+    <h2>Dialoge</h2>
+    <div class="tab-panel metro active">
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"dialog-backdrop show"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"dialog"</span><span class="tag-open">&gt;</span>
+    <span class="tag-open">&lt;h3&gt;</span>app entfernen?<span class="tag-close">&lt;/h3&gt;</span>
+    <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"actions"</span><span class="tag-open">&gt;&lt;button&gt;</span>abbrechen<span class="tag-close">&lt;/button&gt;&lt;button&gt;</span>entfernen<span class="tag-close">&lt;/button&gt;&lt;/div&gt;</span>
+  &lt;/div&gt;
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+    </div>
+    <div class="tab-panel fluent">
+      <div class="snippet"><pre><span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"dialog-backdrop show"</span><span class="tag-open">&gt;</span>
+  <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"dialog"</span><span class="tag-open">&gt;</span>
+    <span class="tag-open">&lt;h3&gt;</span>datei löschen?<span class="tag-close">&lt;/h3&gt;</span>
+    <span class="tag-open">&lt;div</span> <span class="attr">class</span>=<span class="val">"actions"</span><span class="tag-open">&gt;</span>
+      <span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn"</span><span class="tag-open">&gt;</span>abbrechen<span class="tag-close">&lt;/button&gt;</span>
+      <span class="tag-open">&lt;button</span> <span class="attr">class</span>=<span class="val">"btn accent"</span><span class="tag-open">&gt;</span>löschen<span class="tag-close">&lt;/button&gt;</span>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</span></pre><button class="copy">kopieren</button></div>
+      <p class="footnote">Öffnen/Schließen per JS: <code>classList.toggle('show')</code> auf <code>.dialog-backdrop</code>.</p>
+    </div>
+  </section>
+
+  <section id="breakpoints">
+    <h2>Breakpoints</h2>
+    <table>
+      <tr><th>Breite</th><th>Metro</th><th>Fluent</th></tr>
+      <tr><td>&lt; 720px</td><td>4 Kachelspalten, Pivot horizontal scrollbar</td><td>Nav als Overlay mit Scrim, Command-Bar-Labels ausgeblendet</td></tr>
+      <tr><td>≥ 720px</td><td>6 Kachelspalten</td><td>Nav fest sichtbar, ein-/ausklappbar</td></tr>
+      <tr><td>≥ 1080px</td><td>8 Kachelspalten</td><td>—</td></tr>
+    </table>
+    <p class="footnote">Kein CSS-Framework, keine Build-Pipeline — reines CSS mit Media Queries auf <code>:root</code>-Ebene. Direkt kopierbar in jedes Projekt ohne Sass/PostCSS.</p>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const sys = btn.dataset.sys;
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.toggle('active', p.classList.contains(sys));
+    });
+  });
+});
+
+document.querySelectorAll('.snippet .copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const text = btn.previousElementSibling.textContent;
+    try{
+      await navigator.clipboard.writeText(text);
+      btn.textContent = 'kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'kopieren'; btn.classList.remove('copied'); }, 1600);
+    }catch(e){
+      btn.textContent = 'fehlgeschlagen';
+    }
+  });
+});
+</script>
+
+<footer style="padding:28px 20px 16px;text-align:center;font-size:12px;color:var(--fg-dim,#6E6E6E);border-top:1px solid var(--border,#D2D2D2);">
+  <p style="margin:0 0 6px;">CSTRSK.DE · COPYRIGHT 2008–<span id="cpyear"></span></p>
+  <p style="margin:0;">
+    <a href="https://cstrsk.de/Impressum.html" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Impressum</a>
+    &nbsp;·&nbsp;
+    <a href="https://cstrsk.de/Privacy%20Policy.html" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">Datenschutz</a>
+    &nbsp;·&nbsp;
+    <a href="https://cstrsk.de/" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">cstrsk.de</a>
+  </p>
+</footer>
+
+<script>document.getElementById('cpyear').textContent = String(new Date().getFullYear());</script>
+<script src="https://cstrsk.de/cookie-consent.js" defer></script>
+<script defer src="https://cstrsk.de/track.php?p=metroui-docs"></script>
+
+</body>
+</html>

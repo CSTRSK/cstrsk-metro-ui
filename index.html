@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metro UI — Responsives Windows-Phone-8-Designsystem</title>
+<link rel="stylesheet" href="css/metro.css">
+</head>
+<body data-theme="dark">
+
+<div class="status-bar"><span id="clock">21:47</span><span>◈ ─────▮</span></div>
+
+<header class="app-header">
+  <p class="eyebrow">start</p>
+  <h1 class="pano-title">designsystem</h1>
+</header>
+
+<nav class="pivot" role="tablist" aria-label="Panorama-Abschnitte">
+  <button role="tab" aria-selected="true" data-panel="p-start">start</button>
+  <button role="tab" aria-selected="false" data-panel="p-controls">steuerelemente</button>
+  <button role="tab" aria-selected="false" data-panel="p-lists">listen</button>
+  <button role="tab" aria-selected="false" data-panel="p-dialogs">dialoge</button>
+</nav>
+
+<!-- START: Kachelraster -->
+<section class="pivot-panel is-active" id="p-start">
+  <main class="tile-grid">
+    <div class="tile tile-2x2 c-cobalt" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">✉</span><span class="tile-label">nachrichten</span></div>
+      <div class="tile-face back c-cobalt"><span class="tile-stat">12</span><span class="tile-label">ungelesen</span></div>
+    </div><span class="tile-badge">12</span></div>
+
+    <div class="tile tile-1x1 c-emerald" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">☎</span></div>
+      <div class="tile-face back c-emerald"><span class="tile-label">3 verpasst</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-magenta" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">📷</span></div>
+      <div class="tile-face back c-magenta"><span class="tile-label">galerie</span></div>
+    </div></div>
+
+    <div class="tile tile-4x2 c-surface" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">☀</span><div><div class="tile-stat">19°</div><span class="tile-label">musterstadt, teils bewölkt</span></div></div>
+      <div class="tile-face back c-surface"><span class="tile-label">morgen 22° · übermorgen 17°</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-mango" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">🎵</span></div>
+      <div class="tile-face back c-mango"><span class="tile-label">musik</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-teal" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">🗺</span></div>
+      <div class="tile-face back c-teal"><span class="tile-label">karten</span></div>
+    </div></div>
+
+    <div class="tile tile-2x2 c-indigo" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">📅</span><span class="tile-label">kalender</span></div>
+      <div class="tile-face back c-indigo"><span class="tile-label">14:00 review<br>16:30 standup</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-crimson" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">🎮</span></div>
+      <div class="tile-face back c-crimson"><span class="tile-label">spiele</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-lime" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">💳</span></div>
+      <div class="tile-face back c-lime"><span class="tile-label">wallet</span></div>
+    </div></div>
+
+    <div class="tile tile-1x1 c-steel" tabindex="0"><div class="tile-flip">
+      <div class="tile-face front"><span class="tile-icon">⚙</span></div>
+      <div class="tile-face back c-steel"><span class="tile-label">einstellungen</span></div>
+    </div></div>
+  </main>
+
+  <div class="theme-picker" aria-label="Akzentfarbe wählen">
+    <button class="swatch" style="background:#0050EF" aria-pressed="true" data-accent="#0050EF" aria-label="Cobalt"></button>
+    <button class="swatch" style="background:#008A00" data-accent="#008A00" aria-label="Emerald"></button>
+    <button class="swatch" style="background:#D80073" data-accent="#D80073" aria-label="Magenta"></button>
+    <button class="swatch" style="background:#F0A30A" data-accent="#F0A30A" aria-label="Mango"></button>
+    <button class="swatch" style="background:#6A00FF" data-accent="#6A00FF" aria-label="Indigo"></button>
+    <button class="swatch" style="background:#A4C400" data-accent="#A4C400" aria-label="Lime"></button>
+  </div>
+</section>
+
+<!-- STEUERELEMENTE -->
+<section class="pivot-panel" id="p-controls">
+  <h2 class="section-title">buttons</h2>
+  <div class="control-row">
+    <button class="btn primary">speichern</button>
+    <button class="btn">abbrechen</button>
+    <button class="btn" disabled>deaktiviert</button>
+  </div>
+
+  <h2 class="section-title">umschalter</h2>
+  <div class="control-row">
+    <label class="switch"><input type="checkbox" checked><span class="rail"><span class="knob"></span></span><span class="txt">wlan</span></label>
+    <label class="switch"><input type="checkbox"><span class="rail"><span class="knob"></span></span><span class="txt">bluetooth</span></label>
+  </div>
+
+  <h2 class="section-title">auswahl</h2>
+  <div class="control-row">
+    <label class="check"><input type="checkbox" checked><span class="box"></span>benachrichtigungen</label>
+    <label class="check"><input type="checkbox"><span class="box"></span>standort teilen</label>
+  </div>
+  <div class="control-row">
+    <label class="radio"><input type="radio" name="theme" checked><span class="dot"></span>dunkel</label>
+    <label class="radio"><input type="radio" name="theme"><span class="dot"></span>hell</label>
+  </div>
+
+  <h2 class="section-title">eingabe</h2>
+  <div class="field"><label for="name">name</label><input type="text" id="name" placeholder="rene"></div>
+  <div class="field search-field"><label for="search">suchen</label><input type="search" id="search" placeholder="apps, einstellungen, web"></div>
+
+  <h2 class="section-title">regler</h2>
+  <div class="slider-wrap"><label for="vol">lautstärke</label><input type="range" id="vol" min="0" max="100" value="60"></div>
+
+  <h2 class="section-title">fortschritt</h2>
+  <p class="hint">unbestimmter Ladezustand — Punkte und Balken</p>
+  <div class="progress-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="progress-bar"></div>
+
+  <div class="control-row">
+    <button class="btn primary" id="toastBtn">toast anzeigen</button>
+  </div>
+</section>
+
+<!-- LISTEN -->
+<section class="pivot-panel" id="p-lists">
+  <h2 class="section-title">kontakte</h2>
+  <ul class="list">
+    <li><div style="display:flex;align-items:center;gap:12px">
+        <span class="avatar c-cobalt">AK</span>
+        <span class="meta"><span class="title">Anna Keller</span><span class="sub">Produktdesign</span></span>
+      </div><span class="chev">›</span></li>
+    <li><div style="display:flex;align-items:center;gap:12px">
+        <span class="avatar c-emerald">JM</span>
+        <span class="meta"><span class="title">Jonas Meier</span><span class="sub">Entwicklung</span></span>
+      </div><span class="chev">›</span></li>
+    <li><div style="display:flex;align-items:center;gap:12px">
+        <span class="avatar c-magenta">TS</span>
+        <span class="meta"><span class="title">Team Support</span><span class="sub">3 offene Tickets</span></span>
+      </div><span class="chev">›</span></li>
+  </ul>
+
+  <h2 class="section-title">einstellungen</h2>
+  <ul class="list">
+    <li><span class="meta"><span class="title">design</span><span class="sub">dunkel · akzent cobalt</span></span><span class="chev">›</span></li>
+    <li><span class="meta"><span class="title">benachrichtigungen</span><span class="sub">alle apps</span></span><span class="chev">›</span></li>
+    <li><span class="meta"><span class="title">speicher</span><span class="sub">42,1 gb frei</span></span><span class="chev">›</span></li>
+  </ul>
+</section>
+
+<!-- DIALOGE -->
+<section class="pivot-panel" id="p-dialogs">
+  <h2 class="section-title">meldungen</h2>
+  <p class="hint">Modale Dialoge im klassischen Message-Box-Stil</p>
+  <div class="control-row">
+    <button class="btn primary" id="dialogBtn">app deinstallieren</button>
+  </div>
+</section>
+
+<div class="toast" id="toast"><span>✓</span><span>Änderungen gespeichert</span></div>
+
+<div class="dialog-backdrop" id="dialogBackdrop">
+  <div class="dialog">
+    <h3>app entfernen?</h3>
+    <p>„designsystem" wird von diesem gerät deinstalliert. gespeicherte daten gehen verloren.</p>
+    <div class="actions">
+      <button id="dialogCancel">abbrechen</button>
+      <button id="dialogOk">entfernen</button>
+    </div>
+  </div>
+</div>
+
+<div class="app-bar" role="toolbar" aria-label="App-Leiste">
+  <button id="themeBtn"><span class="glyph">☺</span>hell/dunkel</button>
+  <button><span class="glyph">＋</span>anheften</button>
+  <button><span class="glyph">↻</span>anordnen</button>
+  <button class="more">⋯</button>
+</div>
+
+<footer style="padding:28px 20px 16px;text-align:center;font-size:12px;color:var(--fg-dim);border-top:1px solid var(--border);">
+  <p style="margin:0 0 6px;">CSTRSK.DE · COPYRIGHT 2008–<span id="cpyear"></span></p>
+  <p style="margin:0;">
+    <a href="https://cstrsk.de/Impressum.html" style="color:var(--fg-dim);text-decoration:none;" target="_blank" rel="noopener">Impressum</a>
+    &nbsp;·&nbsp;
+    <a href="https://cstrsk.de/Privacy%20Policy.html" style="color:var(--fg-dim);text-decoration:none;" target="_blank" rel="noopener">Datenschutz</a>
+    &nbsp;·&nbsp;
+    <a href="https://cstrsk.de/" style="color:var(--fg-dim);text-decoration:none;" target="_blank" rel="noopener">cstrsk.de</a>
+  </p>
+</footer>
+
+<script src="js/metro.js" defer></script>
+<script src="https://cstrsk.de/cookie-consent.js" defer></script>
+<script defer src="https://cstrsk.de/track.php?p=metroui"></script>
+
+</body>
+</html>
